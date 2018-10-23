@@ -1,14 +1,23 @@
 package com.sgic.hrm.leavesystem.service;
 
-import java.util.List;
+import java.net.URISyntaxException;
+import java.time.ZonedDateTime;
+
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.Resources;
+import org.springframework.http.ResponseEntity;
 
 import com.sgic.hrm.leavesystem.entity.LeaveRequest;
 
 public interface LeaveRequestService {
-	 boolean addLeaveRequest(LeaveRequest leaveRequest);
-	   List<LeaveRequest> getAllLeaveRequests();
-	   boolean editLeaveRequest(LeaveRequest leaveRequest);
-	   boolean deleteLeaveRequest(Integer id);
-	   LeaveRequest getById(Integer id);
-
+	
+	ResponseEntity<?> addLeaveRequest(LeaveRequest LeaveRequest) throws URISyntaxException;
+	Resources<Resource<LeaveRequest>>  getAllLeaveRequests();
+	Resource <LeaveRequest> getLeaveRequestById(Integer id);
+	void deleteLeaveRequest(Integer id);
+	ResponseEntity<?> editLeaveRequest(LeaveRequest leaveRequest, Integer id) throws URISyntaxException;
+	
+	Resources<Resource<LeaveRequest>> getLeaveRequestsByUserAndStatus(Integer userId, Integer statusId);
+	Resources<Resource<LeaveRequest>> getLeaveRequestsByDate(ZonedDateTime date);
+	Resources<Resource<LeaveRequest>> getLeaveRequestsByUser(Integer id);
 }

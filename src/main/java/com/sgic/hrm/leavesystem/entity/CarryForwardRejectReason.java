@@ -22,7 +22,7 @@ public class CarryForwardRejectReason implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	@Id
+	
 	private Integer carryForwardRequestId;
 	@OneToOne(cascade = { CascadeType.PERSIST })
 	@JoinColumn(name = "rejected_by")

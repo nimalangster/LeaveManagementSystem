@@ -1,15 +1,19 @@
 package com.sgic.hrm.leavesystem.service;
 
-import java.util.List;
+import java.net.URISyntaxException;
+
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.Resources;
+import org.springframework.http.ResponseEntity;
 
 import com.sgic.hrm.leavesystem.entity.CarryForward;
 
 public interface CarryForwardService {
 	
-	 boolean addCarryForward(CarryForward carryForward);
-	 List<CarryForward> getAllCarryForwards();
-	 boolean editCarryForward(CarryForward carryForward, Integer id);
-	 boolean deleteCarryForward(Integer id);
-	 CarryForward getById(Integer id);
+	ResponseEntity<?> addCarryForward(CarryForward CarryForward) throws URISyntaxException;
+	Resources<Resource<CarryForward>>  getAllCarryForwards();
+	Resource <CarryForward> getCarryForwardById(Integer id);
+	void deleteCarryForward(Integer id);
+	ResponseEntity<?> editCarryForward(CarryForward carryForward, Integer id) throws URISyntaxException;
 
 }

@@ -1,14 +1,17 @@
 package com.sgic.hrm.leavesystem.service;
 
-import java.util.List;
+import java.net.URISyntaxException;
+
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.Resources;
+import org.springframework.http.ResponseEntity;
 
 import com.sgic.hrm.leavesystem.entity.RejectLeaveRequest;
-
 public interface RejectLeaveRequestService {
 	
-	boolean addRejectLeaveRequest(RejectLeaveRequest rejectLeaveRequest);
-    List<RejectLeaveRequest> getAllRejectLeaveRequests();
-    boolean editRejectLeaveRequest(RejectLeaveRequest rejectLeaveRequest);
-    boolean deleteRejectLeaveRequest(Integer id);
-    RejectLeaveRequest getById(Integer id);
+	ResponseEntity<?> addRejectLeaveRequest(RejectLeaveRequest rejectLeaveRequest) throws URISyntaxException;
+	Resources<Resource<RejectLeaveRequest>>  getAllRejectLeaveRequests();
+	Resource <RejectLeaveRequest> getRejectLeaveRequestById(Integer id);
+	void deleteRejectLeaveRequest(Integer id);
+	ResponseEntity<?> editRejectLeaveRequest(RejectLeaveRequest rejectLeaveRequest, Integer id) throws URISyntaxException;
 }
